@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        <!-- 启用spring mvc 注解 -->
+<context:annotation-config />
+    <context:component-scan base-package="controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <mvc:annotation-driven/>
+    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+    <mvc:interceptors>
+    <!--<bean class="com.ma.interceptor.CustomeInterceptor" />-->
+    <!--拦截器1-->
+
+
+    <mvc:interceptor>
+        <!--配置拦截器的作用路径-->
+        <mvc:mapping path="/person/*"/>
+        <mvc:mapping path="/user/*"/>
+        <mvc:mapping path="/diary/*"/>
+        <mvc:mapping path="/image/*"/>
+        <mvc:mapping path="/done/*"/>
+        <mvc:mapping path="/todo/*"/>
+        <mvc:mapping path="/noip/*"/>
+        <mvc:mapping path="/sixManager/*"/>
+        <mvc:exclude-mapping path="/user/doLogin"/>
+        <mvc:exclude-mapping path="/noip/get*"/>
+
+        <!--定义在<mvc:interceptor>下面的表示匹配指定路径的请求才进行拦截-->
+        <bean class="interceptor.PersonInterceptor"/>
+    </mvc:interceptor>
+    </mvc:interceptors>
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+            <property name="prefix" value="/WEB-INF/"/>
+            <property name="suffix" value=".jsp"/>
+        </bean>
+        </beans>
