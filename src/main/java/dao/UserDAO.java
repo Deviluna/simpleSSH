@@ -1,13 +1,12 @@
 package dao;
+import com.sun.istack.internal.NotNull;
 import entity.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
-import java.sql.Timestamp;
 import java.util.*;
 @Transactional
 @Repository
@@ -24,4 +23,20 @@ public class UserDAO {
         getSession().save(userEntity);
     }
 
+    public void updateUser(UserEntity userEntity) {
+        getSession().update(userEntity);
+    }
+
+    public void deleteUserById(Integer id) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(id);
+        getSession().delete(userEntity);
+    }
+
+    public List<UserEntity> listUsers(Integer pageNo, @NotNull Integer pageSize, @NotNull String queryStr) {
+        Query query = getSession().createQuery(queryStr);
+        query.setFirstResult(null == pageNo ? 0 : pageNo * pageSize - 1);
+        query.setMaxResults(pageSize);
+        return query.list();
+    }
 }

@@ -1,5 +1,6 @@
 package service;
 
+import commons.ServiceResponse;
 import dao.UserDAO;
 import entity.UserEntity;
 import org.slf4j.Logger;
@@ -19,12 +20,35 @@ public class UserService {
         userDAO.addUserEntity(userEntity);
     }
 
-    public void deleteUser(Long userId) {
+    public void deleteUser(Integer userId) {
+        if (null == userId) {
+            logger.error("需要删除的主键ID不能为空");
+            return;
+        }
+        userDAO.deleteUserById(userId);
     }
 
-    public void updateUser() {
+    public void updateUser(UserEntity userEntity) {
+        userDAO.updateUser(userEntity);
     }
 
-    public void listUsers() {
+    public ServiceResponse listUsers(Integer pageNo, Integer pageSize, String username, Boolean type) {
+        ServiceResponse sr = new ServiceResponse();
+        StringBuilder queryStr = new StringBuilder("from user");
+        boolean flag = false;
+        if (null != username && username.length() > 0) {
+            flag = true;
+            queryStr.append(" where username=").append(username);
+        }
+        if (null != type) {
+            if (flag) {
+                queryStr.append(" and ");
+            } else {
+                queryStr.append(" where ");
+            }
+            queryStr.append(" type=").append(type);
+        }
+        sr.put("vos", userDAO.listUsers(pageNo, pageSize, queryStr.toString()));
+        return sr;
     }
 }
