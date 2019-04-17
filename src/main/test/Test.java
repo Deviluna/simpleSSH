@@ -1,4 +1,5 @@
 import controller.UserController;
+import dao.SourceDAO;
 import entity.*;
 import net.bytebuddy.asm.Advice;
 import org.hibernate.Session;
@@ -27,6 +28,20 @@ import java.util.Set;
 public class Test {
     @Autowired
     UserService userService;
+    @Autowired
+    TestService testService;
+
+    @org.junit.Test
+    public void addArticle(){
+        ArticleEntity articleEntity=new ArticleEntity();
+        articleEntity.setImage_url("fdafds");
+        articleEntity.setContent_url("fdsafdsafdsafds");
+        articleEntity.setTitle("title");
+        articleEntity.setSid(0);
+        testService.addArticle(articleEntity);
+    }
+
+
     @org.junit.Test
     public void test(){
         UserEntity userEntity=new UserEntity();
