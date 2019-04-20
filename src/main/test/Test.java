@@ -1,3 +1,5 @@
+import com.alibaba.fastjson.JSON;
+import commons.ServiceResponse;
 import controller.UserController;
 import dao.SourceDAO;
 import entity.*;
@@ -56,6 +58,12 @@ public class Test {
         userEntity.setType(false);
         System.out.println(userEntity);
         userService.addUser(userEntity);
+    }
+
+    @org.junit.Test
+    public void testGetUser() {
+        ServiceResponse sr = userService.listUsers(1, 10, "wu", null);
+        System.out.print(JSON.toJSONString(sr));
     }
 
 }

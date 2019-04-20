@@ -38,11 +38,11 @@ public class UserService {
 
     public ServiceResponse listUsers(Integer pageNo, Integer pageSize, String username, Boolean type) {
         ServiceResponse sr = new ServiceResponse();
-        StringBuilder queryStr = new StringBuilder("from user");
+        StringBuilder queryStr = new StringBuilder("from entity.UserEntity");
         boolean flag = false;
         if (null != username && username.length() > 0) {
             flag = true;
-            queryStr.append(" where username=").append(username);
+            queryStr.append(" where username='").append(username).append("'");
         }
         if (null != type) {
             if (flag) {
@@ -50,8 +50,9 @@ public class UserService {
             } else {
                 queryStr.append(" where ");
             }
-            queryStr.append(" type=").append(type);
+            queryStr.append(" type='").append(type).append("'");
         }
+        System.out.println(queryStr.toString());
         sr.put("vos", userDAO.listUsers(pageNo, pageSize, queryStr.toString()));
         return sr;
     }

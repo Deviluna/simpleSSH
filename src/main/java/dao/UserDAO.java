@@ -43,8 +43,8 @@ public class UserDAO {
 
     public List<UserEntity> listUsers(Integer pageNo, @NotNull Integer pageSize, @NotNull String queryStr) {
         Query query = getSession().createQuery(queryStr);
-        query.setFirstResult(null == pageNo ? 0 : pageNo * pageSize - 1);
-        query.setMaxResults(pageSize);
-        return query.list();
+//        query.setFirstResult(null == pageNo ? 0 : pageNo * pageSize - 1);
+//        query.setMaxResults(pageSize);
+        return query.getResultList();
     }
 }

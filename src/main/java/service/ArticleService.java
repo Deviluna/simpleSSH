@@ -34,7 +34,7 @@ public class ArticleService {
     public ServiceResponse listArticles(String sid) {
         ServiceResponse sr = new ServiceResponse();
         StringBuilder queryStr = new StringBuilder("from article");
-        queryStr.append(" where sid=").append(sid);
+        queryStr.append(" where sid='").append(sid).append("'");
         sr.put("vos", articleDAO.list(queryStr.toString()));
         return sr;
     }
