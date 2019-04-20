@@ -33,7 +33,7 @@ public class SourceService {
 
     public ServiceResponse listSources(Integer pageNo, Integer pageSize) {
         ServiceResponse sr = new ServiceResponse();
-        StringBuilder queryStr = new StringBuilder("from user");
+        StringBuilder queryStr = new StringBuilder("from source");
         sr.put("vos", sourceDAO.list(pageNo, pageSize, queryStr.toString()));
         return sr;
     }
