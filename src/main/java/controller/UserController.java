@@ -6,11 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.UserService;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @RequestMapping("login")
+    public String doLogin(String username , String password, HttpSession httpSession){
+        if(userService.doLogin(username,password)){
+            httpSession.setAttribute("username",username);
+
+        }
+        return "index";
+    }
+
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ServiceResponse addNewUser(UserEntity userEntity) {

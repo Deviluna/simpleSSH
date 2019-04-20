@@ -16,6 +16,10 @@ public class UserService {
     @Autowired
     UserDAO userDAO;
 
+    public boolean doLogin(String username,String password){
+        return userDAO.doLogin(username,password);
+    }
+
     public void addUser(UserEntity userEntity) {
         userDAO.addUserEntity(userEntity);
     }

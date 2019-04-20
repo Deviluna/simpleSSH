@@ -23,6 +23,14 @@ public class UserDAO {
         getSession().save(userEntity);
     }
 
+    public Boolean doLogin(String username,String password){
+        Query query=getSession().createQuery("from entity.UserEntity where username=?1 and password=?2").setParameter(1,username).setParameter(2,password);
+        if(query.getResultList().size()>0)
+            return true;
+        else
+            return false;
+    }
+
     public void updateUser(UserEntity userEntity) {
         getSession().update(userEntity);
     }

@@ -41,6 +41,12 @@ public class Test {
         testService.addArticle(articleEntity);
     }
 
+    @org.junit.Test
+    public void doLogin(){
+        Boolean bool=userService.doLogin("wu","wu1234");
+        System.out.println(bool);
+    }
+
 
     @org.junit.Test
     public void test(){
