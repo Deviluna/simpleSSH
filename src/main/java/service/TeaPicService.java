@@ -21,10 +21,14 @@ public class TeaPicService {
     @Autowired
     private TeaPicDao teaPicDao;
 
-    public ServiceResponse add(MultipartFile file) {
+    public ServiceResponse add(Integer sid, MultipartFile file) {
         ServiceResponse sr = new ServiceResponse();
         try {
-            this.storePic(file.getInputStream(), file);
+            String path = this.storePic(file.getInputStream(), file);
+            TeaPicEntity entity = new TeaPicEntity();
+            entity.setSid(sid);
+            entity.setPic_url(path);
+            teaPicDao.add(entity);
         } catch (Exception e) {
             e.printStackTrace();
             sr.put("errorCode", -1);
@@ -53,14 +57,15 @@ public class TeaPicService {
         return sr;
     }
 
-    public void storePic(InputStream inputStream,MultipartFile multipartFile) throws Exception{
+    public String storePic(InputStream inputStream,MultipartFile multipartFile) throws Exception{
         FileOutputStream outputStream = null;
+        String targetFilePath = picPath + "/" + (null == multipartFile ? "11.jpg" : multipartFile.getName());
         try {
             File file = new File(picPath);
             if (!file.exists()) {
                 file.mkdir();
             }
-            File target = new File(picPath + "/" + (null == multipartFile ? "11.jpg" : multipartFile.getName()));
+            File target = new File(targetFilePath);
             outputStream = new FileOutputStream(target);
             // 设置数据缓冲
             byte[] bs = new byte[1024 * 2];
@@ -70,7 +75,7 @@ public class TeaPicService {
             }
             outputStream.flush();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw e;
         } finally {
             if (null != inputStream) {
                 inputStream.close();
@@ -79,6 +84,7 @@ public class TeaPicService {
                 outputStream.close();
             }
         }
+        return targetFilePath;
     }
 
     public static void main(String[] args) {

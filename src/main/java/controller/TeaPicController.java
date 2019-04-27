@@ -16,8 +16,9 @@ public class TeaPicController {
     private TeaPicService teaPicService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ServiceResponse addPic(@RequestParam("file") MultipartFile file) {
-        return teaPicService.add(file);
+    public ServiceResponse addPic(@RequestParam Integer sid,
+                                  @RequestParam("file") MultipartFile file) {
+        return teaPicService.add(sid, file);
     }
 
     @RequestMapping(value = "/list")
