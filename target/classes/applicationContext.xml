@@ -48,7 +48,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
         </property>
         <property name="packagesToScan">
             <list>
-                <value>entity</value>
+                <value>entities</value>
             </list>
         </property>
     </bean>
