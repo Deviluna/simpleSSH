@@ -3,11 +3,12 @@ package characters;
 import entities.Entity;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Character
+ *
  */
 public abstract class Character extends Entity {
-    protected int unhealthPoint;
-    protected int health;
+    protected int unhealthPoint = 10;
+    protected int health = 100;
     protected abstract int dealAttackDamage();
     public abstract int defendAttack(Character enemy);
 

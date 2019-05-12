@@ -5,7 +5,9 @@ import pickups.Opener;
 import pickups.Pickup;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * TreasureChest
+ * locked init
+ * should have key to open it
  */
 public class TreasureChest extends Openable {
     public TreasureChest(String _description) {

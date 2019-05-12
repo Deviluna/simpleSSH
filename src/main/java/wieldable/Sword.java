@@ -3,7 +3,8 @@ package wieldable;
 import pickups.Wieldable;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Sword
+ * one kind of weapon
  */
 public class Sword extends Wieldable {
     public Sword(String _description, int low, int high) {

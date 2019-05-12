@@ -1,7 +1,7 @@
 package valuables;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Coin
  */
 public class Coin extends Valuable {
     public Coin(String _description, int value) {

@@ -1,7 +1,7 @@
 package valuables;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Ring
  */
 public class Ring extends Valuable {
     public Ring(String _description, int value) {

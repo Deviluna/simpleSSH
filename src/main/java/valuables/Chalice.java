@@ -1,7 +1,7 @@
 package valuables;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Chalice
  */
 public class Chalice extends Valuable {
     public Chalice(String _description, int value) {

@@ -4,7 +4,8 @@ package valuables;
 import pickups.Consumable;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Valuable
+ * goods to upgrade player`s confidence
  */
 public abstract class Valuable extends Consumable {
     public Valuable(String _description, int value) {

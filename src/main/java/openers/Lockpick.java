@@ -4,7 +4,8 @@ import pickups.Openable;
 import pickups.Opener;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Lockpick
+ * a tool to open TreasureChest or WarChest
  */
 public class Lockpick extends Opener {
     public Lockpick(String _description) {

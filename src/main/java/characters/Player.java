@@ -2,16 +2,18 @@ package characters;
 
 import gameplay.Inventory;
 import pickups.Wieldable;
+import wieldable.FistsofFury;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Player
  */
 public class Player extends Character {
 
     private int confidence;
     private String name;
-    private Wieldable weapon;
-    private Inventory inventory;
+    // player wires a FistsofFury init
+    private Wieldable weapon = new FistsofFury("", 1, 5);
+    private Inventory inventory = new Inventory();
 
     public Player(String name, String description, int health, int confidence) {
         this.name = name;
@@ -61,7 +63,13 @@ public class Player extends Character {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
+    public void stats() {
+        if (null != this.weapon) {
+            System.out.println(this.name + " wires " + this.weapon.getId());
+        }
+        if(null != this.inventory)
+            System.out.println(this.name + " has " + this.inventory.toString());
+
+        System.out.println(this.name + " health " + this.health + "; confidence" + this.confidence);
     }
 }

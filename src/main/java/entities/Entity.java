@@ -1,16 +1,14 @@
 package entities;
 
-import javax.annotation.PostConstruct;
 import java.util.Random;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Entity
  */
 public abstract class Entity {
     protected String description;
     protected String id;
 
-    @PostConstruct
     public void init() {
         this.id = this.getClass().getSimpleName();
     }

@@ -3,7 +3,8 @@ package wieldable;
 import pickups.Wieldable;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Axe
+ * one kind of weapon
  */
 public class Axe extends Wieldable {
     public Axe(String _description, int low, int high) {

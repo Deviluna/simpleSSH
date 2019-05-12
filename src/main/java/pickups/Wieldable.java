@@ -1,15 +1,17 @@
 package pickups;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Wieldable
+ * weapons that would add player`s damage
  */
 public class Wieldable extends Pickup {
     public Wieldable(String _description) {
         super(_description);
     }
 
-    protected int high;
-    protected int low;
+    // player`s init damage 1-5
+    protected int high = 5;
+    protected int low = 1;
 
     public int hit() {
         return getRandomInt(low, high);

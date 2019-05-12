@@ -139,6 +139,8 @@ public class ReadWorldDataFile {
 
 		int[] passages = new int[nTokens];
 
+		System.out.println("connecting room size:" + nTokens);
+
 
 		for(int i=0;i<nTokens;i++)
 		{

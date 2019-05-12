@@ -4,7 +4,7 @@ package food;
 import pickups.Consumable;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Food
  */
 public abstract class Food extends Consumable {
     public Food(String _description, int health) {

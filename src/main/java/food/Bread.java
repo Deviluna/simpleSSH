@@ -1,7 +1,7 @@
 package food;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Bread
  */
 public class Bread extends Food {
     public Bread(String _description, int health) {

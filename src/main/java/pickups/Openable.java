@@ -3,7 +3,7 @@ package pickups;
 
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Openable
  */
 public abstract class Openable extends Pickup {
     public Openable(String _description) {

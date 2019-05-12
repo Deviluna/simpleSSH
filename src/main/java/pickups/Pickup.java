@@ -3,7 +3,8 @@ package pickups;
 import entities.Entity;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Pickup
+ * goods to eat or used
  */
 public abstract class Pickup extends Entity {
     public Pickup(String _description) {

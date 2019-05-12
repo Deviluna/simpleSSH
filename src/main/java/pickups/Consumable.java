@@ -1,7 +1,7 @@
 package pickups;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Consumable
  */
 public abstract class Consumable extends Pickup {
     public Consumable(String _description) {

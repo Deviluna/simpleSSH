@@ -4,13 +4,13 @@ import characters.Monster;
 import gameplay.Inventory;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Room
  */
 public class Room extends Entity {
     private Monster monster;
     Inventory pickupsInRoom;
     Room[] connectingRooms;
-    boolean finalRoom;
+    Boolean finalRoom;
 
     public Room() {
     }
@@ -52,5 +52,20 @@ public class Room extends Entity {
 
     public void setFinalRoom(boolean finalRoom) {
         this.finalRoom = finalRoom;
+    }
+
+    public void describe() {
+        if (null != monster) {
+            monster.getDescription();
+        }
+        if(null != pickupsInRoom) {
+            System.out.println("there is a " + pickupsInRoom.toString() + " on  the floor");
+        }
+        if (null != connectingRooms && connectingRooms.length > 0) {
+            System.out.println("there is " + connectingRooms.length + " doors");
+        }
+        if (null != finalRoom && finalRoom) {
+
+        }
     }
 }

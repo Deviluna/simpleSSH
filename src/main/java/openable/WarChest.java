@@ -5,7 +5,9 @@ import pickups.Opener;
 import pickups.Pickup;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * WarChest
+ * locked init
+ * should have a key to open it
  */
 public class WarChest extends Openable {
     public WarChest(String _description) {

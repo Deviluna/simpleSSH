@@ -3,13 +3,15 @@ package characters;
 import java.util.Random;
 
 /**
- * Created by Machenike on 2019/5/11.
+ * Monster
  */
 public abstract class Monster extends Character {
     protected int probability;
-    protected int damage;
+    // monster`s init damage 1
+    protected int damage = 1;
 
     public Monster(int probability) {
+        init();
         this.probability = probability;
     }
 
@@ -29,6 +31,8 @@ public abstract class Monster extends Character {
         if (0 >= this.getHealth()) {
             return false;
         }
-        return this.probability <= new Random().nextInt(101);
+        int appearProbability = new Random().nextInt(101);
+        System.out.println(this.getId() + " probability: " + this.probability + "; appearProbability : " + appearProbability);
+        return this.probability >= appearProbability;
     }
 }
