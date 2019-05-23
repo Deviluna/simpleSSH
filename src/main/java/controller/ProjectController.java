@@ -18,9 +18,9 @@ import java.util.Date;
 @RequestMapping("/project")
 public class ProjectController {
 
-    // 失败状态
+    // 审核失败
     private Boolean STATUS_FALSE = false;
-    // 成功状态
+    // 审核成功
     private Boolean STATUS_SUCCEED = true;
 
     @Autowired
@@ -42,7 +42,7 @@ public class ProjectController {
     public ServiceResponse check(ProjectInfoEntity entity, HttpSession httpSession) {
         ServiceResponse sr = new ServiceResponse();
         if (null == entity.getProjectId()) {
-            sr.put("errorMsg", "请指定审核的项目");
+            sr.put("errorMsg", "请指定要核查的记录ID");
             return sr;
         }
         UserInfoEntity loginUser = (UserInfoEntity) httpSession.getAttribute("userVo");

@@ -17,8 +17,8 @@ public class TeacherController {
     private TeacherInfoDAO teacherInfoDAO;
 
     /**
-     * 鏌ヨ褰撳墠鐧婚檰鐢ㄦ埛鐨勪俊鎭紝teacher鐨勫睘鎬т俊鎭?
-     * 濡傛灉鎯充竴骞舵煡璇俊鎭紝鍙互涓? /api/user/self 鎺ュ彛鍚堝苟
+     * 查询当前登陆的 teacher 信息
+     * 可与 /api/user/self 合并一起查询
      * @param httpSession
      * @return
      */
