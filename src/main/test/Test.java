@@ -2,6 +2,7 @@ import com.alibaba.fastjson.JSON;
 import commons.ServiceResponse;
 import controller.UserController;
 import dao.SourceDAO;
+import dao.UserInfoDAO;
 import entity.*;
 import net.bytebuddy.asm.Advice;
 import org.hibernate.Session;
@@ -29,41 +30,11 @@ import java.util.Set;
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class Test {
     @Autowired
-    UserService userService;
-    @Autowired
-    TestService testService;
+    private UserInfoDAO userInfoDAO;
 
     @org.junit.Test
-    public void addArticle(){
-        ArticleEntity articleEntity=new ArticleEntity();
-        articleEntity.setImage_url("fdafds");
-        articleEntity.setContent_url("fdsafdsafdsafds");
-        articleEntity.setTitle("title");
-        articleEntity.setSid(0);
-        testService.addArticle(articleEntity);
+    public void doLogin() {
+        UserInfoEntity entity = userInfoDAO.doLogin("admin", "admin");
+        System.out.println(JSON.toJSONString(entity));
     }
-
-    @org.junit.Test
-    public void doLogin(){
-        Boolean bool=userService.doLogin("wu","wu1234");
-        System.out.println(bool);
-    }
-
-
-    @org.junit.Test
-    public void test(){
-        UserEntity userEntity=new UserEntity();
-        userEntity.setUsername("wu");
-        userEntity.setPassword("wu1234");
-        userEntity.setType(false);
-        System.out.println(userEntity);
-        userService.addUser(userEntity);
-    }
-
-    @org.junit.Test
-    public void testGetUser() {
-        ServiceResponse sr = userService.listUsers(1, 10, "wu", null);
-        System.out.print(JSON.toJSONString(sr));
-    }
-
 }
